@@ -1,8 +1,8 @@
 pipeline {
     agent any
 
-    tools {
-        jdk 'JDK'
+    environment {
+        SONAR_SCANNER_HOME = tool 'SonarScanner'
     }
 
     stages {
