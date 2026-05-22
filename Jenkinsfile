@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        jdk 'JDK'
+    }
+
     stages {
 
         stage('Checkout') {
@@ -13,7 +17,7 @@ pipeline {
             steps {
                 withSonarQubeEnv('SonarQube') {
                     sh '''
-                        sonar-scanner \
+                        ${SONAR_SCANNER_HOME}/bin/sonar-scanner \
                           -Dsonar.projectKey=pipeline-cicd \
                           -Dsonar.sources=src \
                           -Dsonar.java.binaries=.
